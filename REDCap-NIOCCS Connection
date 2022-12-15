@@ -2,7 +2,7 @@ library(tidyverse)
 library(httr)
 library(jsonlite)
 library(REDCapR)
-token <- "E10CCF6DCD3E1F56DC100D3E8754F691"
+token <- 
 uri <- "https://redcap.doh.wa.gov/api/"
 
 #Read the dataset
