@@ -2,7 +2,7 @@ library(tidyverse)
 library(httr)
 library(jsonlite)
 library(REDCapR)
-token <- PID: 399
+token <- "E10CCF6DCD3E1F56DC100D3E8754F691"
 uri <- "https://redcap.doh.wa.gov/api/"
 
 #Read the dataset
@@ -32,6 +32,20 @@ NIOCCS_WebService <- function(id, industry, occupation)
   return(json_results)}
 
 #Batch Iterate Rows, Input into DF
+io_reponse_df <- pmap_dfr(list(id, industry, occupation), NIOCCS_WebService)
+
+#Unnest list columns
+io_reponse_df <- io_reponse_df %>%
+  select(id, Industry, Occupation) %>%
+  unnest_wider(c(Industry, Occupation))
+
+#Renaming columns for REDCap import
+
+
+
+
+
+
 
 
 
